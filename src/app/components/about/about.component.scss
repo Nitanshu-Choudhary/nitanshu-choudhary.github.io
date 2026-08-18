@@ -1,0 +1,116 @@
+.about-section {
+  background: var(--bg-secondary);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.8rem;
+  align-items: stretch;
+}
+
+.about-bio-card {
+  display: flex;
+  flex-direction: column;
+
+  .bio-heading {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  .bio-paragraph {
+    color: var(--text-secondary);
+    font-size: 1.08rem;
+    margin-bottom: 1.3rem;
+    line-height: 1.75;
+  }
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+  margin-top: auto;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.025);
+  padding: 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+  transition: var(--transition-bounce);
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  }
+
+  .stat-value {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+}
+
+.about-highlights-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  .highlight-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.6rem;
+    padding: 1.8rem;
+
+    .highlight-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      transition: var(--transition-bounce);
+    }
+
+    &:hover .highlight-icon {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
+    }
+
+    .highlight-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight-desc {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

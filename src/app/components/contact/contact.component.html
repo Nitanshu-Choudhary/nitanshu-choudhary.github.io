@@ -1,0 +1,72 @@
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-title-wrapper" appScrollReveal revealAnimation="fade-up">
+      <span class="section-subtitle">Let's Connect</span>
+      <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info Cards -->
+      <div class="contact-info" appScrollReveal revealAnimation="fade-right" [revealDelay]="100">
+        <h3 class="info-heading">Let's build something extraordinary together</h3>
+        <p class="info-text">
+          Feel free to reach out for inquiries, discussions, or professional connections!
+        </p>
+
+        <div class="method-cards">
+          <a *ngFor="let item of contactMethods; let i = index" 
+             [href]="item.action" 
+             target="_blank"
+             rel="noopener noreferrer"
+             class="method-card glass-card"
+             appScrollReveal 
+             revealAnimation="fade-up" 
+             [revealDelay]="200 + i * 100">
+            <div class="method-icon">
+              <i [class]="item.icon"></i>
+            </div>
+            <div class="method-content">
+              <span class="method-title">{{ item.title }}</span>
+              <span class="method-value">{{ item.value }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper glass-card" appScrollReveal revealAnimation="fade-left" [revealDelay]="150">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div *ngIf="isSubmitted" class="success-message">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Opening email client to send your message...</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="formData.name" required placeholder="Enter your name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="formData.email" required placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" [(ngModel)]="formData.subject" placeholder="Enter subject">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" [(ngModel)]="formData.message" rows="5" required placeholder="Write your message..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn" [disabled]="!contactForm.form.valid">
+            <span>Send Message</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

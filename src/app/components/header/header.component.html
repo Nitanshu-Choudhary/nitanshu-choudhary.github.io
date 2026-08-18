@@ -1,0 +1,39 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container header-container">
+    <a href="#hero" class="logo">
+      <span class="logo-icon">&lt;/&gt;</span>
+      <span class="logo-text">Portfolio<span class="dot">.</span></span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <ul class="nav-list">
+        <li *ngFor="let link of navLinks">
+          <a [href]="link.href" class="nav-link">{{ link.label }}</a>
+        </li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta">
+        <span>Hire Me</span>
+        <i class="fa-solid fa-paper-plane"></i>
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" [attr.aria-label]="'Toggle Menu'">
+      <i [class]="isMobileMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer Navigation -->
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul class="mobile-nav-list">
+      <li *ngFor="let link of navLinks">
+        <a [href]="link.href" class="mobile-nav-link" (click)="closeMobileMenu()">{{ link.label }}</a>
+      </li>
+    </ul>
+    <a href="#contact" class="btn btn-primary mobile-cta" (click)="closeMobileMenu()">
+      <span>Hire Me</span>
+      <i class="fa-solid fa-paper-plane"></i>
+    </a>
+  </div>
+</header>

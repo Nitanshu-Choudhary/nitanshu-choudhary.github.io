@@ -1,0 +1,54 @@
+<section id="experience" class="section experience-section">
+  <div class="container">
+    <div class="section-title-wrapper" appScrollReveal revealAnimation="fade-up">
+      <span class="section-subtitle">Career & Background</span>
+      <h2 class="section-title">Work Experience & <span class="gradient-text">Education</span></h2>
+    </div>
+
+    <!-- Work Experience Card -->
+    <div class="experience-timeline">
+      <div class="timeline-card glass-card" appScrollReveal revealAnimation="fade-up">
+        <div class="card-header">
+          <div class="role-company">
+            <h3 class="role-title">{{ experience.role }}</h3>
+            <h4 class="company-name gradient-text">
+              <i class="fa-solid fa-building"></i> {{ experience.company }}
+            </h4>
+          </div>
+          <div class="period-badge">
+            <i class="fa-regular fa-calendar"></i>
+            <span>{{ experience.duration }}</span>
+          </div>
+        </div>
+
+        <ul class="experience-bullets">
+          <li *ngFor="let point of experience.highlights">
+            <i class="fa-solid fa-angle-right bullet-icon"></i>
+            <span>{{ point }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Education Section -->
+      <div class="education-container">
+        <h3 class="education-section-title" appScrollReveal revealAnimation="fade-up">
+          <i class="fa-solid fa-graduation-cap"></i> Education
+        </h3>
+        
+        <div class="education-grid">
+          <div *ngFor="let edu of education; let i = index" 
+               class="education-card glass-card" 
+               appScrollReveal 
+               revealAnimation="zoom-in" 
+               [revealDelay]="i * 150">
+            <div class="edu-header">
+              <h4 class="edu-degree">{{ edu.degree }}</h4>
+              <span class="edu-period">{{ edu.period }}</span>
+            </div>
+            <p class="edu-institution"><i class="fa-solid fa-university"></i> {{ edu.institution }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,57 @@
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <div class="section-title-wrapper" appScrollReveal revealAnimation="fade-up">
+      <span class="section-subtitle">Code & Open Source</span>
+      <h2 class="section-title">GitHub <span class="gradient-text">Repositories</span></h2>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="state-container">
+      <i class="fa-solid fa-circle-notch fa-spin spinner-icon"></i>
+      <p>Fetching repositories from GitHub...</p>
+    </div>
+
+    <!-- Fallback / Visit Profile Card if No Repos Returned -->
+    <div *ngIf="!isLoading && repositories.length === 0" class="state-container glass-card">
+      <i class="fa-brands fa-github github-placeholder-icon"></i>
+      <h3 class="placeholder-title">GitHub Projects</h3>
+      <p class="placeholder-desc">
+        Explore open-source repositories and code samples directly on GitHub.
+      </p>
+      <a [href]="config.githubUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <span>View Code on GitHub</span>
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+
+    <!-- Repositories Showcase Grid -->
+    <div *ngIf="!isLoading && repositories.length > 0" class="projects-grid">
+      <div *ngFor="let repo of repositories; let i = index" 
+           class="project-card glass-card" 
+           appScrollReveal 
+           revealAnimation="zoom-in"
+           [revealDelay]="i * 80">
+        <div class="project-header">
+          <div class="project-icon">
+            <i class="fa-solid fa-code-branch"></i>
+          </div>
+          <span class="badge-language">{{ repo.language }}</span>
+        </div>
+
+        <h3 class="project-title">{{ repo.name }}</h3>
+        <p class="project-desc">{{ repo.description }}</p>
+
+        <div class="tech-stack" *ngIf="repo.topics && repo.topics.length > 0">
+          <span *ngFor="let topic of repo.topics" class="tech-badge">#{{ topic }}</span>
+        </div>
+
+        <div class="project-footer">
+          <a [href]="repo.htmlUrl" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code on GitHub">
+            <i class="fa-brands fa-github"></i>
+            <span>View Code</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,113 @@
+<section id="hero" class="hero-section">
+  <!-- Glowing Animated Background Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <div class="container hero-container">
+    <div class="hero-content animate-fade-in">
+      <div class="status-badge">
+        <span class="status-pulse"></span>
+        <span>{{ config.badge }}</span>
+      </div>
+
+      <h1 class="hero-title">
+        Hi, I'm <span class="shimmer-text">{{ config.name }}</span>
+      </h1>
+      
+      <h2 class="hero-subtitle">
+        <span class="gradient">{{ config.title }}</span>
+      </h2>
+
+      <!-- Notice Period Highlight Pill -->
+      <div class="notice-period-banner">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>Notice Period: <strong>30 Days Left</strong> (Ready to Join)</span>
+      </div>
+
+      <p class="hero-bio">{{ config.summary }}</p>
+
+      <div class="hero-actions">
+        <a [href]="config.resumeUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <span>View Resume</span>
+          <i class="fa-solid fa-file-pdf"></i>
+        </a>
+        <a [href]="config.githubUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <span>View GitHub</span>
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <span>Let's Connect</span>
+          <i class="fa-regular fa-paper-plane"></i>
+        </a>
+      </div>
+
+      <div class="hero-socials">
+        <span class="socials-label">Connect:</span>
+        <div class="social-icons">
+          <a *ngFor="let social of socialLinks" 
+         
+             [href]="social.url" 
+             [target]="social.url.startsWith('http') ? '_blank' : '_self'"
+             rel="noopener noreferrer"
+             (click)="onSocialClick($event, social.url)"
+             [attr.aria-label]="social.label"
+             class="social-link">
+            <i [class]="social.icon"></i>
+
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Avatar & Code Editor Box -->
+    <div class="hero-visual">
+      <!-- Code Editor Mockup Card -->
+      <div class="code-card glass-card">
+        <div class="code-card-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="code-filename">developer.config.ts</span>
+        </div>
+        <div class="code-body">
+          <pre><code><span class="kw">const</span> <span class="var">developer</span> = &#123;
+  <span class="key">name</span>: <span class="str">"Nitanshu Chaudhary"</span>,
+  <span class="key">title</span>: <span class="str">"Full Stack .NET Developer"</span>,
+  <span class="key">noticePeriod</span>: <span class="str">"30 Days Left ⚡"</span>,
+  <span class="key">stack</span>: [<span class="str">"C#"</span>, <span class="str">"ASP.NET Core"</span>, <span class="str">"Angular"</span>, <span class="str">"Azure"</span>],
+  <span class="key">status</span>: <span class="str">"Available in 30 Days 🚀"</span>
+&#125;;</code></pre>
+        </div>
+      </div>
+
+      <!-- Floating Tech Badges -->
+      <div class="floating-badge badge-angular">
+        <i class="fa-brands fa-angular"></i>
+        <span>Angular</span>
+      </div>
+
+      <div class="floating-badge badge-node">
+        <i class="fa-solid fa-code"></i>
+        <span>ASP.NET Core</span>
+      </div>
+
+      <div class="floating-badge badge-ts">
+        <i class="fa-solid fa-clock"></i>
+        <span>30-Day Notice</span>
+      </div>
+
+      <div class="floating-badge badge-db">
+        <i class="fa-solid fa-database"></i>
+        <span>SQL & PostgreSQL</span>
+      </div>
+
+      <div class="floating-badge badge-azure">
+        <i class="fa-solid fa-bolt"></i>
+        <span>Azure Functions</span>
+      </div>
+    </div>
+  </div>
+</section>

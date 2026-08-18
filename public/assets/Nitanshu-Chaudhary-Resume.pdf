@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitanshu Chaudhary - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --text: #1e293b;
+      --muted: #475569;
+      --border: #cbd5e1;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 3rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .header { text-align: center; margin-bottom: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 1.5rem; }
+    .name { font-size: 2.4rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
+    .title { font-size: 1.25rem; font-weight: 600; color: var(--muted); margin-top: 0.2rem; }
+    .notice-pill { display: inline-block; background: #fef3c7; color: #b45309; border: 1px solid #fde68a; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.8rem; border-radius: 20px; margin-top: 0.5rem; }
+    .contact-info { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; font-size: 0.9rem; color: var(--muted); }
+    .contact-info a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .section-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 0.05em; margin-top: 1.8rem; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+    p { font-size: 0.95rem; color: #334155; text-align: justify; margin-bottom: 0.8rem; }
+    .skill-group { margin-bottom: 0.4rem; font-size: 0.92rem; }
+    .skill-title { font-weight: 700; color: var(--text); }
+    .exp-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.05rem; margin-top: 0.8rem; }
+    .exp-sub { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-bottom: 0.6rem; }
+    ul { margin-left: 1.2rem; font-size: 0.92rem; color: #334155; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    .actions-bar { max-width: 850px; margin: 0 auto 1.5rem auto; display: flex; justify-content: space-between; align-items: center; }
+    .print-btn { background: var(--primary); color: #fff; padding: 0.6rem 1.4rem; border-radius: 6px; text-decoration: none; font-weight: 600; cursor: pointer; border: none; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .resume-container { box-shadow: none; padding: 0; }
+      .actions-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="actions-bar">
+    <a href="/" style="color: var(--primary); text-decoration: none; font-weight: 600;">← Back to Portfolio</a>
+    <button onclick="window.print()" class="print-btn">🖨️ Print / Save as PDF</button>
+  </div>
+
+  <div class="resume-container">
+    <div class="header">
+      <h1 class="name">NITANSHU CHAUDHARY</h1>
+      <h2 class="title">Full Stack .NET Developer</h2>
+      <div class="notice-pill">⚡ Serving Notice Period — 30 Days Left (Immediate / 30-Day Joiner)</div>
+      <div class="contact-info">
+        <span>Chandigarh, India</span> |
+        <span>+91 90151 60816</span> |
+        <a href="mailto:NitanshuChoudhary003@gmail.com">NitanshuChoudhary003@gmail.com</a> |
+        <a href="https://www.linkedin.com/in/nitanshu-choudhary-b9a340351" target="_blank">linkedin.com/in/nitanshu-choudhary-b9a340351</a>
+      </div>
+    </div>
+
+    <div class="section-title">Professional Summary</div>
+    <p>
+      Full Stack .NET Developer with 3+ years of experience building and supporting enterprise web applications in C#, ASP.NET Core, and Angular. Comfortable owning a feature end to end — from API design through deployment and production support. Background includes healthcare data workflows, third-party CRM/e-commerce integrations (HubSpot, Shopify), and asynchronous processing with Azure Functions. Serving 30-day notice period and ready for immediate opportunities.
+    </p>
+
+    <div class="section-title">Technical Skills</div>
+    <div class="skill-group"><span class="skill-title">Languages & Backend:</span> C#, ASP.NET Core, ASP.NET MVC, .NET, REST API Design, Dapper, Entity Framework Core</div>
+    <div class="skill-group"><span class="skill-title">Frontend:</span> Angular, TypeScript, JavaScript, HTML5, CSS3, Bootstrap, Responsive UI Development</div>
+    <div class="skill-group"><span class="skill-title">Architecture & Engineering Practices:</span> Clean Architecture, SOLID Principles, Microservices, Agile/Scrum, Unit Testing, Code Reviews</div>
+    <div class="skill-group"><span class="skill-title">Database & Data:</span> SQL Server, PostgreSQL</div>
+    <div class="skill-group"><span class="skill-title">Cloud & DevOps:</span> Azure Functions, Durable Functions, Azure Blob Storage, Application Insights, Docker, Git, IIS, CI/CD Pipelines</div>
+    <div class="skill-group"><span class="skill-title">Third-Party Integrations:</span> HubSpot API, Shopify API, Webhook-based Sync</div>
+    <div class="skill-group"><span class="skill-title">AI-Assisted Engineering:</span> GitHub Copilot / Codex, Claude — precise prompt design to generate production-ready code, automate test scaffolding, and speed up debugging, cutting time on routine tasks by ~40-50%</div>
+
+    <div class="section-title">Professional Experience</div>
+    <div class="exp-header">
+      <span>Software Developer — CS Soft Solutions (I) Pvt. Ltd.</span>
+      <span>3+ Years</span>
+    </div>
+    <div class="exp-sub">2023 – Present | Mohali, India</div>
+    <ul>
+      <li><strong>APIs & backend:</strong> Built and maintained REST APIs in ASP.NET Core (C#, Dapper, EF Core) for business-critical workflows; refactored a chunk of an older service toward Clean Architecture layering, which made new feature work easier to test and onboard new devs onto.</li>
+      <li><strong>Full-stack delivery:</strong> Shipped features end-to-end across Angular and ASP.NET Core, working directly with QA and product to scope tickets and close out sprint commitments in a two-week Agile cadence.</li>
+      <li><strong>Async processing:</strong> Built Azure Functions and Durable Functions to automate background jobs, including healthcare report generation that previously required manual steps — cut report turnaround from same-day to a few minutes.</li>
+      <li><strong>Integrations:</strong> Connected HubSpot and Shopify APIs to automate customer onboarding, barcode lifecycle tracking, and CRM sync, removing a manual data-entry step for the ops team.</li>
+      <li><strong>Data & performance:</strong> Tuned SQL Server and PostgreSQL queries (indexing, query rewrites) on a few slow endpoints, bringing response times down noticeably on the affected pages.</li>
+      <li><strong>Production support:</strong> On rotation for IIS deployments and CI/CD releases; used Application Insights, Azure Log Stream, and KQL to trace and resolve production issues, usually within the same day.</li>
+      <li><strong>AI-assisted workflow:</strong> Adopted GitHub Copilot/Codex and Claude into daily development — wrote scoped, context-rich prompts for boilerplate, refactors, and test scaffolding, which cut time on routine coding tasks roughly in half and let me spend more time on design and code review.</li>
+    </ul>
+
+    <div class="section-title">Education</div>
+    <ul>
+      <li><strong>Master of Computer Applications (MCA)</strong> — Chandigarh University, 2023–2025</li>
+      <li><strong>Bachelor of Computer Applications (BCA)</strong> — SVSD PG College, Bhatoli, 2022</li>
+    </ul>
+  </div>
+
+</body>
+</html>

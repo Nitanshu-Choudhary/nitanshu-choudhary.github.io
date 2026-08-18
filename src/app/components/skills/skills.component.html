@@ -1,0 +1,30 @@
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <div class="section-title-wrapper" appScrollReveal revealAnimation="fade-up">
+      <span class="section-subtitle">Technical Expertise</span>
+      <h2 class="section-title">Skills & <span class="gradient-text">Competencies</span></h2>
+    </div>
+
+    <div class="skills-grid">
+      <div *ngFor="let cat of skillCategories; let i = index" 
+           class="skill-category-card glass-card" 
+           appScrollReveal 
+           revealAnimation="fade-up" 
+           [revealDelay]="i * 100">
+        <div class="category-header">
+          <div class="category-icon">
+            <i [class]="cat.icon"></i>
+          </div>
+          <h3 class="category-title">{{ cat.category }}</h3>
+        </div>
+
+        <div class="skills-tag-cloud">
+          <span *ngFor="let skill of cat.skills" class="skill-tag-pill">
+            <i class="fa-solid fa-check check-icon"></i>
+            {{ skill }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

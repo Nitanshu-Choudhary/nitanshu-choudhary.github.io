@@ -1,0 +1,47 @@
+<section id="about" class="section about-section">
+  <div class="container">
+    <div class="section-title-wrapper" appScrollReveal revealAnimation="fade-up">
+      <span class="section-subtitle">Discover My Background</span>
+      <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-bio-card glass-card" appScrollReveal revealAnimation="fade-right" [revealDelay]="100">
+        <h3 class="bio-heading">{{ config.title }}</h3>
+        <p class="bio-paragraph">
+          {{ config.summary }}
+        </p>
+        <p class="bio-paragraph">
+          Experienced in owning end-to-end features — from RESTful API design through cloud deployment and production support in Agile 2-week sprints.
+        </p>
+        
+        <div class="about-stats-grid">
+          <div *ngFor="let item of capabilityOverview; let i = index" 
+               class="stat-card" 
+               appScrollReveal 
+               revealAnimation="zoom-in" 
+               [revealDelay]="200 + i * 100">
+            <h4 class="stat-value gradient-text"><i [class]="item.icon"></i></h4>
+            <span class="stat-label">{{ item.title }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-highlights-grid">
+        <div *ngFor="let item of highlights; let i = index" 
+             class="highlight-card glass-card" 
+             appScrollReveal 
+             revealAnimation="fade-left" 
+             [revealDelay]="150 + i * 150">
+          <div class="highlight-icon">
+            <i [class]="item.icon"></i>
+          </div>
+          <div class="highlight-info">
+            <h4 class="highlight-title">{{ item.title }}</h4>
+            <p class="highlight-desc">{{ item.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
