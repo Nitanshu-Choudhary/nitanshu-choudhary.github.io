@@ -14,7 +14,8 @@
   flex-direction: column;
 
   .bio-heading {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+    font-weight: 800;
     margin-bottom: 1.2rem;
     color: var(--text-primary);
   }
@@ -37,18 +38,18 @@
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(255, 255, 255, 0.02);
   padding: 1.4rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   text-align: center;
-  transition: var(--transition-bounce);
+  transition: var(--transition-normal);
 
   &:hover {
-    background: rgba(99, 102, 241, 0.08);
-    border-color: rgba(99, 102, 241, 0.35);
-    transform: translateY(-4px);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    background: rgba(0, 240, 255, 0.08);
+    border-color: var(--border-accent);
+    transform: translateY(-5px);
+    box-shadow: var(--glow-primary);
   }
 
   .stat-value {
@@ -60,7 +61,7 @@
   .stat-label {
     font-size: 0.88rem;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -79,24 +80,26 @@
       width: 58px;
       height: 58px;
       border-radius: var(--radius-md);
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
-      border: 1px solid rgba(99, 102, 241, 0.35);
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.12) 0%, rgba(99, 102, 241, 0.12) 100%);
+      border: 1px solid var(--border-accent);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent-cyan);
       font-size: 1.6rem;
       flex-shrink: 0;
-      transition: var(--transition-bounce);
+      transition: var(--transition-normal);
+      box-shadow: var(--glow-primary);
     }
 
     &:hover .highlight-icon {
-      transform: scale(1.1) rotate(-5deg);
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
+      transform: scale(1.1) rotate(-4deg);
+      box-shadow: var(--glow-indigo);
+      color: var(--accent-purple);
     }
 
     .highlight-title {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 0.4rem;
     }

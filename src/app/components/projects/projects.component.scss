@@ -2,35 +2,41 @@
   background: var(--bg-secondary);
 }
 
-.featured-project-wrapper {
-  max-width: 960px;
+.state-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 600px;
   margin: 0 auto;
-
-  .featured-card {
-    border: 1px solid rgba(99, 102, 241, 0.4);
-    box-shadow: var(--glow-indigo), var(--shadow-lg);
-
-    .project-subtitle {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-  }
-}
-
-.sub-section-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  color: var(--text-primary);
+  gap: 1.2rem;
+
+  .spinner-icon {
+    font-size: 2.5rem;
+    color: var(--accent-cyan);
+  }
+
+  .github-placeholder-icon {
+    font-size: 3.5rem;
+    color: var(--accent-blue);
+  }
+
+  .placeholder-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .placeholder-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 2.2rem;
 }
 
@@ -58,12 +64,12 @@
     &::before {
       opacity: 1;
       height: 4px;
-      box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+      box-shadow: 0 0 15px var(--accent-cyan);
     }
 
     .project-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+      transform: scale(1.1) rotate(4deg);
+      box-shadow: var(--glow-primary);
     }
   }
 
@@ -77,27 +83,14 @@
       width: 52px;
       height: 52px;
       border-radius: var(--radius-md);
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(99, 102, 241, 0.15));
-      border: 1px solid rgba(6, 182, 212, 0.35);
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(99, 102, 241, 0.12));
+      border: 1px solid var(--border-accent);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent-cyan);
-      font-size: 1.5rem;
-      transition: var(--transition-bounce);
-    }
-
-    .badge-featured {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.35rem 0.95rem;
-      border-radius: var(--radius-full);
-      background: rgba(168, 85, 247, 0.15);
-      color: #e879f9;
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+      font-size: 1.45rem;
+      transition: var(--transition-normal);
     }
 
     .badge-language {
@@ -107,22 +100,23 @@
       letter-spacing: 0.08em;
       padding: 0.35rem 0.95rem;
       border-radius: var(--radius-full);
-      background: rgba(6, 182, 212, 0.12);
+      background: rgba(0, 240, 255, 0.1);
       color: var(--accent-cyan);
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      border: 1px solid var(--border-accent);
     }
   }
 
   .project-title {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     color: var(--text-primary);
+    text-transform: capitalize;
   }
 
   .project-desc {
     color: var(--text-secondary);
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     line-height: 1.65;
     margin-bottom: 1.8rem;
   }
@@ -135,7 +129,7 @@
     margin-bottom: 1.8rem;
 
     .tech-badge {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       padding: 0.25rem 0.75rem;
       border-radius: var(--radius-sm);
@@ -144,7 +138,7 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
 
       &:hover {
-        border-color: rgba(99, 102, 241, 0.3);
+        border-color: var(--border-accent);
         color: var(--text-primary);
       }
     }
@@ -159,9 +153,9 @@
     .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent-cyan);
       transition: var(--transition-fast);
 

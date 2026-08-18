@@ -2,7 +2,7 @@ export const PORTFOLIO_CONFIG = {
   name: 'Nitanshu Chaudhary',
   title: 'Full Stack .NET Developer',
   noticePeriod: 'Serving Notice Period — 30 Days Left (Immediate / 30-Day Joiner)',
-  badge: 'Available to Join in 30 Days (Serving Notice Period)',
+  badge: 'Open to Full-Time Opportunities',
   company: 'CS Soft Solutions (I) Pvt. Ltd.',
   phone: '+91 90151 60816',
   location: 'Chandigarh, India',
@@ -11,6 +11,7 @@ export const PORTFOLIO_CONFIG = {
   githubUrl: 'https://github.com/Nitanshu-Choudhary',
   linkedinUrl: 'https://www.linkedin.com/in/nitanshu-choudhary-b9a340351',
   resumeUrl: '/assets/Nitanshu-Chaudhary-Resume.html',
+  formspreeEndpoint: 'https://formspree.io/f/xbldwazr',
 
   summary: 'Full Stack .NET Developer with 3+ years of experience building and supporting enterprise web applications in C#, ASP.NET Core, and Angular. Comfortable owning features end-to-end — from API design through deployment and production support. Serving 30-day notice period and available for new opportunities.',
 

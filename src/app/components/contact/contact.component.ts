@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { PORTFOLIO_CONFIG } from '../../config/portfolio.config';
 
@@ -21,7 +22,11 @@ export class ContactComponent {
     message: ''
   };
 
+  isSubmitting = false;
   isSubmitted = false;
+  errorMessage = '';
+
+  constructor(private http: HttpClient) {}
 
   get contactMethods() {
     return [
@@ -52,21 +57,59 @@ export class ContactComponent {
     ];
   }
 
-  onSubmit() {
-    if (!this.formData.name || !this.formData.email || !this.formData.message) {
-      return;
-    }
+  validateEmail(email: string): boolean {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email.toLowerCase());
+  }
 
-    const mailtoSubject = encodeURIComponent(this.formData.subject || 'Portfolio Contact');
-    const mailtoBody = encodeURIComponent(`Name: ${this.formData.name}\nEmail: ${this.formData.email}\n\nMessage:\n${this.formData.message}`);
-    
-    // Open default mail client fallback
-    window.location.href = `mailto:${this.config.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
-    
-    this.isSubmitted = true;
-    setTimeout(() => {
-      this.isSubmitted = false;
-      this.formData = { name: '', email: '', subject: '', message: '' };
-    }, 4000);
+  get isValid(): boolean {
+    return (
+      this.formData.name.trim().length >= 2 &&
+      this.validateEmail(this.formData.email) &&
+      this.formData.subject.trim().length >= 2 &&
+      this.formData.message.trim().length >= 10
+    );
+  }
+
+  onSubmit() {
+    if (!this.isValid || this.isSubmitting) return;
+
+    this.isSubmitting = true;
+    this.errorMessage = '';
+
+    const payload = {
+      name: this.formData.name,
+      email: this.formData.email,
+      subject: this.formData.subject,
+      message: this.formData.message,
+      _replyto: this.formData.email
+    };
+
+    // Try sending email via Formspree AJAX API first
+    this.http.post(this.config.formspreeEndpoint, payload).subscribe({
+      next: () => {
+        this.isSubmitting = false;
+        this.isSubmitted = true;
+        this.formData = { name: '', email: '', subject: '', message: '' };
+
+        setTimeout(() => {
+          this.isSubmitted = false;
+        }, 6000);
+      },
+      error: () => {
+        // Fallback: Open mail client if API endpoint fails
+        this.isSubmitting = false;
+        const mailtoSubject = encodeURIComponent(this.formData.subject || 'Portfolio Contact');
+        const mailtoBody = encodeURIComponent(`Name: ${this.formData.name}\nEmail: ${this.formData.email}\n\nMessage:\n${this.formData.message}`);
+        window.location.href = `mailto:${this.config.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
+        
+        this.isSubmitted = true;
+        this.formData = { name: '', email: '', subject: '', message: '' };
+
+        setTimeout(() => {
+          this.isSubmitted = false;
+        }, 6000);
+      }
+    });
   }
 }
