@@ -6,7 +6,7 @@ export const PORTFOLIO_CONFIG = {
   company: 'CS Soft Solutions (I) Pvt. Ltd.',
   phone: '+91 90151 60816',
   location: 'Chandigarh, India',
-  email: 'NitanshuChoudhary003@gmail.com',
+  email: 'nitanshu.choudhary.dev@gmail.com',
   githubUsername: 'Nitanshu-Choudhary',
   githubUrl: 'https://github.com/Nitanshu-Choudhary',
   linkedinUrl: 'https://www.linkedin.com/in/nitanshu-choudhary-b9a340351',

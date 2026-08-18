@@ -36,8 +36,8 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 2.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.8rem;
 }
 
 .project-card {
@@ -91,6 +91,7 @@
       color: var(--accent-cyan);
       font-size: 1.45rem;
       transition: var(--transition-normal);
+      flex-shrink: 0;
     }
 
     .badge-language {
@@ -107,16 +108,17 @@
   }
 
   .project-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
     color: var(--text-primary);
     text-transform: capitalize;
+    word-break: break-word;
   }
 
   .project-desc {
     color: var(--text-secondary);
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     line-height: 1.65;
     margin-bottom: 1.8rem;
   }
@@ -171,5 +173,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card .project-title {
+    font-size: 1.2rem;
   }
 }

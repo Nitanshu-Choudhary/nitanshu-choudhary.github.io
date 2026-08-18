@@ -26,7 +26,7 @@
     width: 4px;
     background: var(--gradient-cyber);
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-    box-shadow: 0 0 15px var(--cyber-cyan);
+    box-shadow: 0 0 15px var(--accent-cyan);
   }
 
   .card-header {
@@ -58,11 +58,11 @@
       padding: 0.4rem 1.1rem;
       border-radius: var(--radius-full);
       background: rgba(0, 240, 255, 0.1);
-      border: 1px solid var(--border-cyan);
-      color: var(--cyber-cyan);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-cyan);
       font-size: 0.88rem;
       font-weight: 700;
-      box-shadow: var(--glow-cyan);
+      box-shadow: var(--glow-primary);
     }
   }
 
@@ -83,7 +83,7 @@
       line-height: 1.65;
 
       .bullet-icon {
-        color: var(--cyber-cyan);
+        color: var(--accent-cyan);
         font-size: 0.95rem;
         margin-top: 0.3rem;
         flex-shrink: 0;
@@ -106,13 +106,13 @@
     color: var(--text-primary);
 
     i {
-      color: var(--cyber-purple);
+      color: var(--accent-purple);
     }
   }
 
   .education-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 1.6rem;
 
     .education-card {
@@ -152,5 +152,31 @@
         gap: 0.5rem;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline-card {
+    padding: 1.4rem 1.1rem;
+
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .role-title {
+        font-size: 1.3rem;
+      }
+      .company-name {
+        font-size: 1rem;
+      }
+    }
+
+    .experience-bullets li {
+      font-size: 0.94rem;
+    }
+  }
+
+  .education-container .education-section-title {
+    font-size: 1.35rem;
   }
 }

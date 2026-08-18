@@ -10,10 +10,10 @@
 
   &.scrolled {
     padding: 0.85rem 0;
-    background: rgba(3, 7, 18, 0.9);
+    background: rgba(6, 11, 24, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-cyan);
-    box-shadow: var(--glow-cyan), var(--shadow-sm);
+    border-bottom: 1px solid var(--border-accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -32,17 +32,17 @@
   font-weight: 800;
 
   .logo-icon {
-    color: var(--cyber-cyan);
+    color: var(--accent-cyan);
     background: rgba(0, 240, 255, 0.1);
     padding: 0.25rem 0.65rem;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--border-cyan);
+    border: 1px solid var(--border-accent);
     font-size: 0.9em;
-    box-shadow: var(--glow-cyan);
+    box-shadow: var(--glow-primary);
   }
 
   .dot {
-    color: var(--cyber-pink);
+    color: var(--accent-indigo);
   }
 }
 
@@ -71,13 +71,12 @@
         left: 0;
         width: 0;
         height: 2px;
-        background: var(--gradient-cyber);
+        background: var(--gradient-primary);
         transition: width 0.3s ease;
-        box-shadow: 0 0 10px var(--cyber-cyan);
       }
 
       &:hover {
-        color: var(--cyber-cyan);
+        color: var(--accent-cyan);
 
         &::after {
           width: 100%;
@@ -95,13 +94,13 @@
 .mobile-toggle {
   display: none;
   background: transparent;
-  border: 1px solid var(--border-cyan);
-  color: var(--cyber-cyan);
+  border: 1px solid var(--border-accent);
+  color: var(--accent-cyan);
   font-size: 1.3rem;
   padding: 0.5rem 0.8rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  box-shadow: var(--glow-cyan);
+  box-shadow: var(--glow-primary);
 }
 
 .mobile-menu {
@@ -114,10 +113,12 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(6, 12, 33, 0.98);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    background: rgba(6, 11, 24, 0.98);
     backdrop-filter: blur(24px);
-    border-bottom: 1px solid var(--border-cyan);
-    padding: 1.8rem 2rem;
+    border-bottom: 1px solid var(--border-accent);
+    padding: 1.8rem 1.5rem;
     gap: 1.5rem;
     box-shadow: var(--shadow-lg);
 
@@ -131,9 +132,11 @@
         font-size: 1.15rem;
         font-weight: 600;
         color: var(--text-secondary);
+        display: block;
+        padding: 0.4rem 0;
 
         &:hover {
-          color: var(--cyber-cyan);
+          color: var(--accent-cyan);
         }
       }
     }
@@ -147,4 +150,16 @@
 @media (max-width: 868px) {
   .desktop-nav { display: none; }
   .mobile-toggle { display: block; }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem 0;
+    &.scrolled {
+      padding: 0.7rem 0;
+    }
+  }
+  .logo {
+    font-size: 1.25rem;
+  }
 }

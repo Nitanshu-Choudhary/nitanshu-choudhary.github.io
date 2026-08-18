@@ -1,4 +1,4 @@
-/* Refined SaaS Developer Design System - Professional & Recruiter-Friendly */
+/* Master Harmonized & Responsive Design System */
 
 :root {
   /* Rich Obsidian & Navy Canvas */
@@ -29,7 +29,7 @@
   --gradient-text: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
   --gradient-shimmer: linear-gradient(90deg, #00f0ff 0%, #6366f1 50%, #00f0ff 100%);
 
-  /* Refined Subtle Glows (25% Intensity Reduction for Modern SaaS Feel) */
+  /* Refined Subtle Glows */
   --glow-primary: 0 4px 16px rgba(0, 240, 255, 0.15);
   --glow-indigo: 0 4px 16px rgba(99, 102, 241, 0.15);
   --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.55);
@@ -52,7 +52,10 @@
   padding: 0;
 }
 
-html {
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -62,7 +65,6 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   background-image: 
     radial-gradient(circle at 12% 18%, rgba(0, 240, 255, 0.05) 0%, transparent 45%),
@@ -92,6 +94,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-primary);
   letter-spacing: -0.02em;
+  word-wrap: break-word;
 }
 
 a {
@@ -111,13 +114,13 @@ button, input, textarea, select {
 }
 
 .section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
 .section-title-wrapper {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .section-subtitle {
@@ -142,7 +145,7 @@ button, input, textarea, select {
   font-weight: 800;
 }
 
-/* Single-Tone Shimmer Text */
+/* Shimmer Text */
 .shimmer-text {
   background: var(--gradient-shimmer);
   background-size: 200% auto;
@@ -159,7 +162,7 @@ button, input, textarea, select {
   background-clip: text;
 }
 
-/* Professional Modern SaaS Glassmorphic Cards */
+/* Glassmorphic Cards */
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
@@ -196,7 +199,7 @@ button, input, textarea, select {
   }
 }
 
-/* Refined SaaS Buttons */
+/* Base Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -303,11 +306,40 @@ button, input, textarea, select {
   50% { opacity: 0.45; transform: scale(1.04); }
 }
 
-@media (max-width: 768px) {
+/* Responsive Media Queries */
+@media (max-width: 992px) {
   .section {
-    padding: 4.5rem 0;
+    padding: 5rem 0;
   }
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .section {
+    padding: 4rem 0;
+  }
+  .section-title-wrapper {
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  .btn {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
   }
 }
