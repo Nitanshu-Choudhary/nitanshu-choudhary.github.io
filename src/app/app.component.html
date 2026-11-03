@@ -8,3 +8,21 @@
   <app-contact></app-contact>
 </main>
 <app-footer></app-footer>
+
+<!-- Floating Scroll-to-Top Indicator with Dynamic Circular Progress Ring -->
+<button class="floating-scroll-top" 
+        [class.visible]="showScrollTop" 
+        (click)="scrollToTop()" 
+        aria-label="Scroll to top of page"
+        title="Scroll to top">
+  <svg class="progress-ring" viewBox="0 0 44 44">
+    <circle class="ring-bg" cx="22" cy="22" r="18"></circle>
+    <circle class="ring-fill" 
+            cx="22" 
+            cy="22" 
+            r="18" 
+            [style.strokeDasharray]="circumference"
+            [style.strokeDashoffset]="strokeDashoffset"></circle>
+  </svg>
+  <i class="fa-solid fa-arrow-up arrow-icon"></i>
+</button>

@@ -11,7 +11,7 @@ export const PORTFOLIO_CONFIG = {
   githubUrl: 'https://github.com/Nitanshu-Choudhary',
   linkedinUrl: 'https://www.linkedin.com/in/nitanshu-choudhary-b9a340351',
   resumeUrl: '/assets/Nitanshu-Chaudhary-Resume.html',
-  formspreeEndpoint: 'https://formspree.io/f/xbldwazr',
+  formEndpoint: 'https://formsubmit.co/ajax/nitanshu.choudhary.dev@gmail.com',
 
   summary: 'Full Stack .NET Developer with 3+ years of experience building and supporting enterprise web applications in C#, ASP.NET Core, and Angular. Comfortable owning features end-to-end — from API design through deployment and production support. Serving 30-day notice period and available for new opportunities.',
 

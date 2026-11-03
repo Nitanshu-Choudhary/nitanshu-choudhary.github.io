@@ -10,26 +10,41 @@
       <div class="contact-info" appScrollReveal revealAnimation="fade-right" [revealDelay]="100">
         <h3 class="info-heading">Let's build something extraordinary together</h3>
         <p class="info-text">
-          Feel free to reach out for inquiries, discussions, or professional connections!
+          Have an exciting project, open position, or just want to chat? Send me a message directly below — it arrives straight in my inbox!
         </p>
 
         <div class="method-cards">
-          <a *ngFor="let item of contactMethods; let i = index" 
-             [href]="item.action" 
-             target="_blank"
-             rel="noopener noreferrer"
-             class="method-card glass-card"
-             appScrollReveal 
-             revealAnimation="fade-up" 
-             [revealDelay]="200 + i * 100">
+          <div *ngFor="let item of contactMethods; let i = index" 
+               class="method-card glass-card"
+               [class.clickable]="item.isEmail"
+               (click)="item.isEmail ? copyEmail($event) : null"
+               appScrollReveal 
+               revealAnimation="fade-up" 
+               [revealDelay]="200 + i * 100">
             <div class="method-icon">
               <i [class]="item.icon"></i>
             </div>
             <div class="method-content">
               <span class="method-title">{{ item.title }}</span>
-              <span class="method-value">{{ item.value }}</span>
+              <a *ngIf="!item.isEmail && item.action !== '#'" 
+                 [href]="item.action" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="method-value link">
+                {{ item.value }} <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+              </a>
+              <span *ngIf="item.isEmail" class="method-value copyable" title="Click to copy email">
+                {{ item.value }}
+                <button type="button" class="copy-pill-btn" (click)="copyEmail($event)" [attr.aria-label]="'Copy email address'">
+                  <i [class]="isCopied ? 'fa-solid fa-check text-success' : 'fa-regular fa-copy'"></i>
+                  <span>{{ isCopied ? 'Copied!' : 'Copy' }}</span>
+                </button>
+              </span>
+              <span *ngIf="!item.isEmail && item.action === '#'" class="method-value">
+                {{ item.value }}
+              </span>
             </div>
-          </a>
+          </div>
         </div>
       </div>
 
@@ -38,9 +53,24 @@
         <form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
           
           <!-- Success Banner -->
-          <div *ngIf="isSubmitted" class="alert-message success">
+          <div *ngIf="isSubmitted" class="alert-message success animate-fade-in">
             <i class="fa-solid fa-circle-check"></i>
-            <span>Thank you! Your message has been sent directly to Nitanshu Chaudhary.</span>
+            <div class="alert-text">
+              <strong>Message Sent!</strong>
+              <span>Thank you! Your message was delivered directly to Nitanshu's inbox. He will reply shortly.</span>
+            </div>
+          </div>
+
+          <!-- In-Page Error / Notice Banner (No Outlook/Mail client ever!) -->
+          <div *ngIf="errorMessage" class="alert-message notice animate-fade-in">
+            <i class="fa-solid fa-circle-info"></i>
+            <div class="alert-text">
+              <span>{{ errorMessage }}</span>
+              <button type="button" class="copy-banner-btn" (click)="copyEmail()">
+                <i [class]="isCopied ? 'fa-solid fa-check' : 'fa-regular fa-copy'"></i>
+                <span>{{ isCopied ? 'Email Copied!' : 'Copy Email Address' }}</span>
+              </button>
+            </div>
           </div>
 
           <!-- Name Field -->
@@ -86,7 +116,7 @@
                    #subjectInput="ngModel" 
                    required 
                    minlength="2"
-                   placeholder="Enter message subject">
+                   placeholder="e.g. Job Opportunity / Full Stack .NET Project">
             <div *ngIf="subjectInput.touched && subjectInput.invalid" class="field-error">
               <span>Subject is required.</span>
             </div>
@@ -110,8 +140,8 @@
           </div>
 
           <button type="submit" class="btn btn-primary submit-btn" [disabled]="!isValid || isSubmitting">
-            <span *ngIf="!isSubmitting">Send Message</span>
-            <span *ngIf="isSubmitting">Sending...</span>
+            <span *ngIf="!isSubmitting">Send Direct Email</span>
+            <span *ngIf="isSubmitting">Sending to Inbox...</span>
             <i *ngIf="!isSubmitting" class="fa-solid fa-paper-plane"></i>
             <i *ngIf="isSubmitting" class="fa-solid fa-circle-notch fa-spin"></i>
           </button>

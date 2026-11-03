@@ -1,11 +1,11 @@
 <section id="hero" class="hero-section">
-  <!-- Glowing Animated Background Orbs -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-  <div class="glow-orb orb-3"></div>
+  <!-- Glowing Animated Background Orbs with scroll parallax -->
+  <div class="glow-orb orb-1" [style.transform]="'translateY(' + (scrollY * 0.15) + 'px)'"></div>
+  <div class="glow-orb orb-2" [style.transform]="'translateY(' + (scrollY * -0.12) + 'px)'"></div>
+  <div class="glow-orb orb-3" [style.transform]="'translateY(' + (scrollY * 0.08) + 'px)'"></div>
 
   <div class="container hero-container">
-    <div class="hero-content animate-fade-in">
+    <div class="hero-content" [style.transform]="'translateY(' + (scrollY * 0.04) + 'px)'">
       <div class="status-badge">
         <span class="status-pulse"></span>
         <span>{{ config.badge }}</span>
@@ -16,7 +16,7 @@
       </h1>
       
       <h2 class="hero-subtitle">
-        <span class="gradient">{{ config.title }}</span>
+        <span class="gradient-text">{{ config.title }}</span>
       </h2>
 
       <!-- Notice Period Highlight Pill -->
@@ -46,7 +46,6 @@
         <span class="socials-label">Connect:</span>
         <div class="social-icons">
           <a *ngFor="let social of socialLinks" 
-         
              [href]="social.url" 
              [target]="social.url.startsWith('http') ? '_blank' : '_self'"
              rel="noopener noreferrer"
@@ -54,16 +53,19 @@
              [attr.aria-label]="social.label"
              class="social-link">
             <i [class]="social.icon"></i>
-
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Visual Avatar & Code Editor Box -->
-    <div class="hero-visual">
-      <!-- Code Editor Mockup Card -->
-      <div class="code-card glass-card">
+    <!-- Visual Avatar & Interactive Scroll-Animated Code Editor Box -->
+    <div class="hero-visual" 
+         (mousemove)="onCardMouseMove($event)" 
+         (mouseleave)="onCardMouseLeave()">
+      
+      <!-- Code Editor Mockup Card with 3D perspective and scroll translateY -->
+      <div class="code-card glass-card"
+           [style.transform]="'perspective(1000px) rotateX(' + cardRotateX + 'deg) rotateY(' + cardRotateY + 'deg) translateY(' + (scrollY * 0.08) + 'px)'">
         <div class="code-card-header">
           <div class="window-dots">
             <span class="dot red"></span>
@@ -71,6 +73,7 @@
             <span class="dot green"></span>
           </div>
           <span class="code-filename">developer.config.ts</span>
+          <span class="live-dot-badge"><span class="pulse-mini"></span> Live</span>
         </div>
         <div class="code-body">
           <pre><code><span class="kw">const</span> <span class="var">developer</span> = &#123;
@@ -83,27 +86,29 @@
         </div>
       </div>
 
-      <!-- Floating Tech Badges -->
-      <div class="floating-badge badge-angular">
+      <!-- Floating Tech Badges with Dynamic Parallax on Scroll -->
+      <div class="floating-badge badge-azure"
+           [style.transform]="'translate3d(' + (scrollY * -0.05) + 'px, ' + (scrollY * 0.14) + 'px, 0)'">
+        <i class="fa-solid fa-bolt"></i>
+        <span>Azure Functions</span>
+      </div>
+
+      <div class="floating-badge badge-angular"
+           [style.transform]="'translate3d(' + (scrollY * 0.06) + 'px, ' + (scrollY * 0.12) + 'px, 0)'">
         <i class="fa-brands fa-angular"></i>
         <span>Angular</span>
       </div>
 
-      <div class="floating-badge badge-node">
+      <div class="floating-badge badge-node"
+           [style.transform]="'translate3d(' + (scrollY * -0.07) + 'px, ' + (scrollY * 0.18) + 'px, 0)'">
         <i class="fa-solid fa-code"></i>
         <span>ASP.NET Core</span>
       </div>
 
-      <div class="floating-badge badge-ts">
-        <i class="fa-solid fa-clock"></i>
+      <div class="floating-badge badge-ts"
+           [style.transform]="'translate3d(' + (scrollY * 0.08) + 'px, ' + (scrollY * 0.2) + 'px, 0)'">
+        <i class="fa-solid fa-database"></i>
         <span>SQL & PostgreSQL</span>
-      </div>
-
-     
-
-      <div class="floating-badge badge-azure">
-        <i class="fa-solid fa-bolt"></i>
-        <span>Azure Functions</span>
       </div>
     </div>
   </div>

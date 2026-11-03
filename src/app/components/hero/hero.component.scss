@@ -9,13 +9,14 @@
   width: 100%;
 }
 
-/* Ambient Subtle SaaS Orbs */
+/* Ambient Subtle SaaS Orbs with Parallax */
 .glow-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(150px);
   pointer-events: none;
   z-index: 0;
+  transition: transform 0.15s ease-out;
 
   &.orb-1 {
     top: 5%;
@@ -59,6 +60,7 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  transition: transform 0.15s ease-out;
 }
 
 .status-badge {
@@ -196,7 +198,7 @@
   }
 }
 
-/* Code Editor Visual Box */
+/* Code Editor Visual Box & Parallax Container */
 .hero-visual {
   position: relative;
   display: flex;
@@ -204,6 +206,7 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  perspective: 1200px;
 }
 
 .code-card {
@@ -213,12 +216,18 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   background: rgba(10, 16, 38, 0.9);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 240, 255, 0.1);
   box-sizing: border-box;
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 28px rgba(0, 240, 255, 0.2);
+  }
 
   .code-card-header {
     background: rgba(255, 255, 255, 0.03);
-    padding: 0.8rem 1.2rem;
+    padding: 0.85rem 1.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -244,6 +253,29 @@
       font-size: 0.8rem;
       color: var(--text-muted);
     }
+
+    .live-dot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+
+      .pulse-mini {
+        width: 6px;
+        height: 6px;
+        background: #34d399;
+        border-radius: 50%;
+        box-shadow: 0 0 6px #34d399;
+      }
+    }
   }
 
   .code-body {
@@ -267,10 +299,10 @@
   }
 }
 
-/* Floating Tech Badges */
+/* Floating Tech Badges with Parallax & Depth */
 .floating-badge {
   position: absolute;
-  background: rgba(10, 16, 38, 0.92);
+  background: rgba(10, 16, 38, 0.94);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-accent);
   padding: 0.6rem 1.2rem;
@@ -281,45 +313,52 @@
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-primary);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  animation: floatSmooth 6s ease-in-out infinite;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 240, 255, 0.1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  z-index: 5;
+  pointer-events: auto;
 
   i {
     font-size: 1.2rem;
     color: var(--accent-cyan);
+    transition: transform 0.3s ease;
   }
 
-  &.badge-angular {
-    top: -8%;
-    right: -5%;
-  }
+  &:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 8px 24px rgba(0, 240, 255, 0.25);
 
-  &.badge-node {
-    bottom: -6%;
-    left: -5%;
-    animation-delay: 2s;
-  }
-
-  &.badge-ts {
-    bottom: 25%;
-    right: -10%;
-    animation-delay: 4s;
-
-    i { color: var(--accent-indigo); }
-  }
-
-  &.badge-db {
-    top: 20%;
-    left: -12%;
-    animation-delay: 1.5s;
+    i {
+      transform: scale(1.15);
+    }
   }
 
   &.badge-azure {
+    top: -12%;
+    left: -6%;
+
+    i { color: var(--accent-cyan); }
+  }
+
+  &.badge-angular {
     top: -10%;
-    left: -5%;
-    animation-delay: 3s;
+    right: -6%;
+
+    i { color: #f43f5e; }
+  }
+
+  &.badge-node {
+    bottom: -8%;
+    left: -8%;
 
     i { color: var(--accent-indigo); }
+  }
+
+  &.badge-ts {
+    bottom: 20%;
+    right: -12%;
+
+    i { color: var(--accent-cyan); }
   }
 }
 

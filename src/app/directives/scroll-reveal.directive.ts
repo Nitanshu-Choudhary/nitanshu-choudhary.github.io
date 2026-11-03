@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@ang
   standalone: true
 })
 export class ScrollRevealDirective implements OnInit, OnDestroy {
-  @Input() revealAnimation: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' = 'fade-up';
+  @Input() revealAnimation: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom-in' | 'flip-up' = 'fade-up';
   @Input() revealDelay: number = 0; // Delay in ms
 
   private observer!: IntersectionObserver;
@@ -25,18 +25,16 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             this.renderer.addClass(this.el.nativeElement, 'revealed');
-            // Unobserve after revealing once
             this.observer.unobserve(entry.target);
           }
         });
       }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
       });
 
       this.observer.observe(this.el.nativeElement);
     } else {
-      // Fallback if IntersectionObserver is unsupported
       this.renderer.addClass(this.el.nativeElement, 'revealed');
     }
   }
