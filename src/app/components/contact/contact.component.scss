@@ -155,10 +155,136 @@
 }
 
 .contact-form-wrapper {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Animated Thank You Success Screen */
+  .success-screen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    .success-badge-container {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+
+      .ripple-glow {
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 240, 255, 0.35);
+        pointer-events: none;
+
+        &.glow-1 {
+          width: 88px;
+          height: 88px;
+          animation: ripplePulse 2.4s infinite ease-out;
+        }
+
+        &.glow-2 {
+          width: 88px;
+          height: 88px;
+          animation: ripplePulse 2.4s infinite ease-out 0.8s;
+        }
+      }
+
+      .success-icon-circle {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(99, 102, 241, 0.25));
+        border: 1px solid var(--border-accent);
+        box-shadow: 0 0 32px rgba(0, 240, 255, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+
+        .checkmark-svg {
+          width: 48px;
+          height: 48px;
+
+          .checkmark-circle {
+            stroke: var(--accent-cyan);
+            stroke-width: 3;
+            stroke-miterlimit: 10;
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            animation: strokeCircle 0.65s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+          }
+
+          .checkmark-check {
+            stroke: #ffffff;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: strokeCheck 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+          }
+        }
+      }
+    }
+
+    .success-heading {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .success-description {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 1.8rem;
+
+      strong {
+        color: #ffffff;
+      }
+    }
+
+    .success-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.15);
+      margin-bottom: 2rem;
+
+      i {
+        font-size: 1rem;
+      }
+    }
+
+    .send-another-btn {
+      padding: 0.75rem 1.8rem;
+      font-size: 0.92rem;
+    }
   }
 
   .alert-message {
@@ -177,19 +303,6 @@
       strong {
         font-size: 1.05rem;
         font-weight: 800;
-      }
-    }
-
-    &.success {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
-      box-shadow: 0 0 24px rgba(16, 185, 129, 0.18);
-
-      i {
-        font-size: 1.5rem;
-        color: #34d399;
-        margin-top: 0.15rem;
       }
     }
 
@@ -286,6 +399,41 @@
   }
 }
 
+/* Keyframe Animations for Checkmark and Ripple */
+@keyframes strokeCircle {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeCheck {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ripplePulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 992px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -308,6 +456,17 @@
 
     .method-content .method-value {
       font-size: 0.92rem;
+    }
+  }
+
+  .contact-form-wrapper .success-screen-wrapper {
+    padding: 2rem 0.5rem;
+
+    .success-heading {
+      font-size: 1.6rem;
+    }
+    .success-description {
+      font-size: 0.95rem;
     }
   }
 }

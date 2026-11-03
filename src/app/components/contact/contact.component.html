@@ -48,21 +48,46 @@
         </div>
       </div>
 
-      <!-- Contact Form -->
+      <!-- Contact Form Wrapper -->
       <div class="contact-form-wrapper glass-card" appScrollReveal revealAnimation="fade-left" [revealDelay]="150">
-        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
-          
-          <!-- Success Banner -->
-          <div *ngIf="isSubmitted" class="alert-message success animate-fade-in">
-            <i class="fa-solid fa-circle-check"></i>
-            <div class="alert-text">
-              <strong>Message Sent!</strong>
-              <span>Thank you! Your message was delivered directly to Nitanshu's inbox. He will reply shortly.</span>
+        
+        <!-- Animated Thank-You Success Screen -->
+        <div *ngIf="isSubmitted" class="success-screen-wrapper">
+          <div class="success-badge-container">
+            <div class="ripple-glow glow-1"></div>
+            <div class="ripple-glow glow-2"></div>
+            <div class="success-icon-circle">
+              <svg class="checkmark-svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+              </svg>
             </div>
           </div>
 
+          <h3 class="success-heading">
+            Thank You for <span class="gradient-text">Connecting!</span>
+          </h3>
+
+          <p class="success-description">
+            Your message has been sent directly to <strong>{{ config.name }}</strong>'s inbox. I appreciate you reaching out and will get back to you promptly!
+          </p>
+
+          <div class="success-status-pill">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Delivered via Direct Secure Dispatch</span>
+          </div>
+
+          <button type="button" class="btn btn-outline send-another-btn" (click)="resetSubmission()">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+            <span>Send Another Message</span>
+          </button>
+        </div>
+
+        <!-- Normal Form (Hidden when isSubmitted is true) -->
+        <form *ngIf="!isSubmitted" (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
+          
           <!-- In-Page Error / Notice Banner (No Outlook/Mail client ever!) -->
-          <div *ngIf="errorMessage" class="alert-message notice animate-fade-in">
+          <div *ngIf="errorMessage" class="alert-message notice">
             <i class="fa-solid fa-circle-info"></i>
             <div class="alert-text">
               <span>{{ errorMessage }}</span>

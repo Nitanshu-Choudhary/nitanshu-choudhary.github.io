@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { PORTFOLIO_CONFIG } from '../../config/portfolio.config';
@@ -13,6 +13,8 @@ import { PORTFOLIO_CONFIG } from '../../config/portfolio.config';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
+  @ViewChild('contactForm') contactForm?: NgForm;
+
   config = PORTFOLIO_CONFIG;
 
   formData = {
@@ -97,6 +99,15 @@ export class ContactComponent {
     });
   }
 
+  resetSubmission() {
+    this.isSubmitted = false;
+    this.errorMessage = '';
+    if (this.contactForm) {
+      this.contactForm.resetForm();
+    }
+    this.formData = { name: '', email: '', subject: '', message: '' };
+  }
+
   onSubmit() {
     if (!this.isValid || this.isSubmitting) return;
 
@@ -119,21 +130,18 @@ export class ContactComponent {
       'Accept': 'application/json'
     });
 
-    // Send email directly through open third-party API (FormSubmit.co)
     const endpoint = this.config.formEndpoint || `https://formsubmit.co/ajax/${this.config.email}`;
 
     this.http.post<any>(endpoint, payload, { headers }).subscribe({
       next: (response) => {
         this.isSubmitting = false;
         this.isSubmitted = true;
+        if (this.contactForm) {
+          this.contactForm.resetForm();
+        }
         this.formData = { name: '', email: '', subject: '', message: '' };
-
-        setTimeout(() => {
-          this.isSubmitted = false;
-        }, 7000);
       },
       error: (err) => {
-        // Pure in-app feedback without launching Outlook or external mail apps
         this.isSubmitting = false;
         this.errorMessage = 'Notice: If this is the first submission, FormSubmit sends an activation link to the inbox. You can also copy Nitanshu\'s email with one click below.';
       }
