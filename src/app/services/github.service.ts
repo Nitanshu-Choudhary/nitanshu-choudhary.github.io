@@ -26,16 +26,27 @@ export class GithubService {
       return of([]);
     }
 
-    const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=12`;
+    const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=15`;
 
     return this.http.get<any[]>(apiUrl).pipe(
       map((repos) => {
         return repos
-          .filter((repo) => !repo.fork) // Exclude forks for clean portfolio showcase
+          .filter((repo) => {
+            const name = (repo.name || '').toLowerCase();
+            const isFork = !!repo.fork;
+            // Exclude portfolio website repositories and forks to keep focus on technical software projects
+            const isPortfolioRepo = 
+              name.endsWith('.github.io') || 
+              name.includes('github.io') || 
+              name === 'portfolio' || 
+              name.includes('portfolio-app');
+
+            return !isFork && !isPortfolioRepo;
+          })
           .map((repo) => ({
             id: repo.id,
             name: repo.name.replace(/-/g, ' ').replace(/_/g, ' '),
-            description: repo.description || 'Public repository on GitHub.',
+            description: repo.description || 'Public repository on GitHub showcasing practical full-stack implementation.',
             htmlUrl: repo.html_url,
             language: repo.language || 'Code',
             stars: repo.stargazers_count || 0,
