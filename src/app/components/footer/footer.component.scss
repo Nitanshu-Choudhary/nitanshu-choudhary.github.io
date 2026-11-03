@@ -17,24 +17,52 @@
   flex-direction: column;
   gap: 0.6rem;
 
-  .footer-logo {
-    display: flex;
+  .brand-logo {
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 800;
+    gap: 0.65rem;
+    text-decoration: none;
 
-    .logo-icon {
-      color: var(--accent-primary);
-      background: rgba(99, 102, 241, 0.15);
-      padding: 0.15rem 0.5rem;
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 0.6rem;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(99, 102, 241, 0.12));
+      border: 1px solid rgba(0, 240, 255, 0.3);
       border-radius: var(--radius-sm);
-      font-size: 0.85em;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-weight: 800;
+      font-size: 0.85rem;
+
+      .mark-bracket { color: var(--accent-cyan); }
+      .mark-initials { color: #ffffff; font-weight: 900; margin: 0 0.15rem; }
+      .mark-slash { color: var(--accent-indigo); }
     }
 
-    .dot {
-      color: var(--accent-cyan);
+    .brand-name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+
+      .brand-name {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+
+      .brand-badge {
+        font-family: 'JetBrains Mono', Consolas, monospace;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: var(--accent-cyan);
+        background: rgba(0, 240, 255, 0.08);
+        border: 1px solid var(--border-accent);
+        padding: 0.15rem 0.45rem;
+        border-radius: var(--radius-sm);
+      }
     }
   }
 
